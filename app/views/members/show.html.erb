@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @member.name %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @member.password %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @member.birthday %>
+</p>
+
+<p>
+  <strong>Comefrom:</strong>
+  <%= @member.comefrom %>
+</p>
+
+<p>
+  <strong>Interest:</strong>
+  <%= @member.interest %>
+</p>
+
+<p>
+  <strong>Ctype:</strong>
+  <%= @member.ctype %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @member.photo %>
+</p>
+
+<p>
+  <strong>Comments count:</strong>
+  <%= @member.comments_count %>
+</p>
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>

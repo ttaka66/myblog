@@ -1,0 +1,18 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% 0.upto(10) do |n| %>
+
+<%= n %>com:
+  id: <%= n %>
+  member_id: 2
+  article_id: 1 
+  cmttitle: <%= n %>
+  comment: (<%= n %>)いいなあ！！
+
+<% end %>
+
+# twocom:
+#   id: 2
+#   member_id: 2
+#   article_id: 1
+#   comment: すご～～い！！

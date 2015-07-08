@@ -1,0 +1,51 @@
+<%= form_for(@member, :html => { :multipart => true } ) do |f| %>
+  <% if @member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+      <% @member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p><%= flash['result'] %></p>
+
+  <div id="profile">
+  <table border="1">
+    <tr>
+      <th>名前</th>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <th>パスワード</th>
+      <td><%= f.text_field :password %></td>
+    </tr>
+    <tr>
+      <th>誕生日</th>
+      <td><%= f.date_select :birthday %></td>
+    </tr>
+    <tr>
+      <th>出身地</th>
+      <td><%= f.text_field :comefrom %></td>
+    </tr>
+    <tr>
+      <th>趣味</th>
+      <td><%= f.text_field :interest %></td>
+    </tr>
+    <tr>
+      <th>写真</th>
+      <td><%= file_field_tag :photo %></td>
+    </tr>
+    <tr>
+      <th>コメントカウント</th>
+      <td><%= f.text_field :comments_count %></td>
+    </tr>
+  </table>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
