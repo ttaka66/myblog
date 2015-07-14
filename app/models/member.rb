@@ -16,4 +16,17 @@ class Member < ActiveRecord::Base
 		end
 	end
 
+	validates :name,
+		presence: { message: 'は必須です'},
+		uniqueness: { allow_blank: true, message: '%{value}はすでに存在します' }
+	validates :email,
+		presence: { message: 'は必須です'},
+		uniqueness: { allow_blank: true, message: '%{value}はすでに存在します' }
+	validates :password,
+		presence: { message: 'は必須です'},
+		length: { minimum: 6, message: 'は%{count}桁でなければなりません'},
+		confirmation: { message: 'が一致していません'}
+	validates :agreement,
+		acceptance: { on: :create, message: 'をチェックしてください' }
+
 end

@@ -33,7 +33,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to @member, notice: 'Member was successfully created.' }
+        format.html { redirect_to controller: :login, action: :index, notice: 'Member was successfully created.' }
         format.json { render :show, status: :created, location: @member }
       else
         format.html { render :new }
@@ -115,7 +115,7 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:name, :password, :birthday, :comefrom, :interest , :comments_count)
+      params.require(:member).permit(:name, :email, :password, :password_confirmation, :birthday, :comefrom, :interest, :agreement )
     end
 
 end

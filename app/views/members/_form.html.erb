@@ -19,8 +19,16 @@
       <td><%= f.text_field :name %></td>
     </tr>
     <tr>
+      <th>Email</th>
+      <td><%= f.text_field :email %></td>
+    </tr>
+    <tr>
       <th>パスワード</th>
-      <td><%= f.text_field :password %></td>
+      <td><%= f.password_field :password %></td>
+    </tr>
+    <tr>
+      <th>パスワード(確認)</th>
+      <td><%= f.password_field :password_confirmation %></td>
     </tr>
     <tr>
       <th>誕生日</th>
@@ -38,12 +46,13 @@
       <th>写真</th>
       <td><%= file_field_tag :photo %></td>
     </tr>
-    <tr>
-      <th>コメントカウント</th>
-      <td><%= f.text_field :comments_count %></td>
-    </tr>
+    
   </table>
   </div>
+  <dl>
+    <dt>agreement</dt>
+    <dd><%= f.check_box :agreement %></dd>
+  </dl>
 
   <div class="actions">
     <%= f.submit %>
