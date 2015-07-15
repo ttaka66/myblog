@@ -7,7 +7,7 @@ class LoginController < ApplicationController
 		if mem then
 			reset_session
 			session[:mem] = mem.id
-			redirect_to params[:referer]
+			redirect_to articles_path
 		# 失敗した場合はflash[:referer]を再セットし、ログインページを再描画
 		else
 			flash.now[:referer] = params[:referer]
