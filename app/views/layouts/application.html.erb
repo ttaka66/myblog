@@ -8,7 +8,18 @@
 </head>
 <body>
 
-<%= yield %>
+<div id="wrap">
+
+<!-- グローバルナビゲーション部分 -->
+<div id="gnav">
+	<ul>
+		<li><%= link_to_unless_current '投稿作成', new_article_path %></li>
+		<li><%= link_to_unless_current '過去の投稿', articles_path %></li>
+		<li><%= link_to '他の人の投稿', members_path %></li>
+	</ul>
+</div>
+
+<%= content_for?(:content) ? yield(:content) : yield %>
 
 </body>
 </html>

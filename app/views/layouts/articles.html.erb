@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Myblog</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<div id="wrap">
-
-<!-- グローバルナビゲーション部分 -->
-<div id="gnav">
-	<ul>
-		<li><%= link_to_unless_current '投稿作成', new_article_path %></li>
-		<li><%= link_to_unless_current '過去の投稿', articles_path %></li>
-		<li><%= link_to '他の人の投稿', members_path %></li>
-	</ul>
-</div>
+<% content_for :content do %>
 
 <!-- ヘッダー部分 -->
 <div id="header">
@@ -92,5 +73,7 @@
 
 
 
-</body>
-</html>
+
+<% end %>
+
+<%= render template: 'layouts/application' %>
