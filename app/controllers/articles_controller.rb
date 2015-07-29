@@ -14,6 +14,8 @@ class ArticlesController < ApplicationController
     limit(page_size).offset(page_num * page_size)
     cnt = Article.where(member_id: session[:mem]).count # 記事カウント
     @page_last = (cnt.to_f / 5).ceil # ページ数切り上げ
+    @articles5 = Article.where(member_id: session[:mem]).order(created_at: :desc).
+        limit(5)
 
     if ym = params[:ym]
     	# render text: ym +'%'
@@ -40,6 +42,8 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
     @article[:member_id] = session[:mem]
+    @articles5 = Article.where(member_id: session[:mem]).order(created_at: :desc).
+        limit(5)
   end
 
   # GET /articles/1/edit
@@ -132,8 +136,7 @@ class ArticlesController < ApplicationController
       # 存在する場合はmembersテーブルを検索し、ユーザー情報を取得
       begin
         @mem = Member.find(session[:mem])
-        @articles5 = Article.where(member_id: session[:mem]).order(created_at: :desc).
-        limit(5)
+        
       # ユーザー情報が存在しない場合は不正ユーザーとみなし、セッションを破棄
       rescue ActiveRecord::RecordNotFound
         reset_session

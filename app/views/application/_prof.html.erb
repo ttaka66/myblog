@@ -1,0 +1,39 @@
+			<div class="sub">
+				<h1>profile</h1>
+				<%= image_tag "/docs/#{mem.id.to_s}-#{mem.created_at.to_s}-#{mem.photo}",
+				alt: 'image', width: 200, height: 250 %>
+				<!-- <img src="" width="200" height="250" alt="photo"> -->
+				<dl class="profile">
+					<dt>Auther:</dt>
+					<dd><%= mem.name %></dd>
+					<dt>Birthday:</dt>
+					<dd><%= mem.birthday %></dd>
+					<dt>From:</dt>
+					<dd><%= mem.comefrom %></dd>
+					<dt>interest:</dt>
+					<dd><%= mem.interest %></dd>
+				</dl>
+				<p><%= link_to 'プロフィール変更', edit_member_path(mem) %></p>
+			</div><!-- .sub & .profile -->
+			<div class="sub">
+			    <h1>the latest article</h1>
+				<% @articles5.each do |article| %>
+    			<p><%= link_to article.title + '(' + article.created_at.strftime('%Y/%m/%d') + ')', article %></p>
+			    <% end %>
+			</div><!-- sub -->
+			<div class="sub">
+				<h1>the latest comment</h1>
+					<p>なんだか最近(2014/12/31)</p>
+					<p>とうとうこの日がやってきた(2014/12/31)</p>
+					<p>とうとうこの日がやってきた(2014/12/31)</p>
+					<p>とうとうこの日がやってきた(2014/12/31)</p>
+					<p>とうとうこの日がやってきた(2014/12/31)</p>
+			</div><!-- sub -->
+			<div class="sub">
+				<h1>the past</h1>
+					<% for i in 0..10 %>
+						<% pasttime = i.month.ago
+						   past = pasttime.strftime('%Y-%m') %>
+						   <P><%= link_to past, action: :index, ym: past %></P>
+					<% end %>
+					
