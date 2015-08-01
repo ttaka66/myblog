@@ -1,0 +1,13 @@
+<%= form_tag({action: :create}, remote: true) do %>
+	<div class="field">
+		<%= label :comment, :cmttitle %><br />
+		<%= text_field :comment, :cmttitle %>
+	</div>
+	<div class="field">
+		<%= label :comment, :comment %><br />
+		<%= text_field :comment, :comment %>
+	</div>
+	<%= hidden_field :comment, :member_id, value: @mem %>
+	<%= hidden_field :comment, :article_id, value: @article.id %>
+	<%= submit_tag 'コメントする' %>
+<% end %>

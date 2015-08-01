@@ -1,0 +1,9 @@
+<% @comments5.each do |comment| %>
+	<div class="comment">
+        <h2><%= comment.cmttitle %></h2>
+        <p><%= simple_format(comment.comment) %></p>
+        <ul>
+          <li><%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></li>
+        </ul>
+    </div>
+<% end %>
