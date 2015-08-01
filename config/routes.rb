@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   
   resources :articles do
-    resources :comments, shallow: true
+    resources :comments, shallow: true do
+      collection do
+        get :com
+      end
+    end
   end
 
   resources :members do

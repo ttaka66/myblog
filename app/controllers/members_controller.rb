@@ -11,6 +11,7 @@ class MembersController < ApplicationController
   def result
     @mem = Member.find_by(name: params[:search])
     @articles = @mem.articles
+    @new_com = true
 
     page_size = 5 # ページ当たりの件数
     @page = params[:page] == nil ? 1 : params[:page].to_i # ページ番号

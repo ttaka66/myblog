@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   # 文字列の形式を変更するメソッド
   require 'kconv'
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article5, only: [:index, :show, :edit]
   before_action :check_logined
 
   # GET /articles
@@ -14,8 +15,6 @@ class ArticlesController < ApplicationController
     limit(page_size).offset(page_num * page_size)
     cnt = Article.where(member_id: session[:mem]).count # 記事カウント
     @page_last = (cnt.to_f / 5).ceil # ページ数切り上げ
-    @articles5 = Article.where(member_id: session[:mem]).order(created_at: :desc).
-        limit(5)
 
     if ym = params[:ym]
     	# render text: ym +'%'
@@ -122,6 +121,11 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
+    end
+
+    def set_article5
+      @articles5 = Article.where(member_id: @mem).order(created_at: :desc).
+        limit(5)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

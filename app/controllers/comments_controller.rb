@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    render text: 'コメント表示'
   end
 
   # GET /comments/1
@@ -14,6 +14,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
+    @mem = session[:mem]
+    @article = Article.find(params[:article_id])
     @comment = Comment.new
   end
 
@@ -28,8 +30,6 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -61,6 +61,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def com
+    @article = Article.find(params[:article_id]) 
+    @comments5 = @article.comments.order(created_at: :desc).
+    limit(5)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
@@ -69,6 +75,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:member_id, :article_id, :comment)
+      params.require(:comment).permit(:member_id, :article_id, :comment, :cmttitle)
     end
 end

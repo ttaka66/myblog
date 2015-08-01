@@ -3,13 +3,14 @@
 onemem:
   id: 1
   name: one
-  password: 2cf00a11121ad260ed32b290f9aefa01279bd5a2
+  password: 2cf00a11121ad260ed32b290f9aefa01279bd5a2 # 12345
   salt: 5f90a188468f64998c5a
   birthday: 2015-06-09
   comefrom: MyString
   interest: MyString
   photo: Belgium.png
   comments_count: 1
+  blog_title: ONEBLOG
 
 twomem:
   id: 2

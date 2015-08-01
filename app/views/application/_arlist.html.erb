@@ -6,12 +6,19 @@
         <ul>
           <li><%= article.created_at.strftime('%Y-%m-%d %H:%M:%S') %></li>
           <li>Category</li>
-          <li>Comment</li>
+          <li><%= link_to 'comment', com_article_comments_path(article_id: article),
+           remote: true %></li>
           <li><%= link_to 'Show', article %></li>
           <li><%= link_to 'Edit', edit_article_path(article) %></li>
           <li><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></li>
         </ul>
+        <% unless @new_com.nil? %>
+         <%= link_to 'コメントを書く', new_article_comment_path(article_id: article),
+         remote: true %>
+        <% end %>
       </div>
+      <div id="new_com<%= article.id %>"></div>
+      <div id="com<%= article.id %>"></div>
     <% end %>
 
     <ul class="page">
