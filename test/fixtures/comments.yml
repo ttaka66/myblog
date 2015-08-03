@@ -5,9 +5,9 @@
 <%= n %>com:
   id: <%= n %>
   member_id: 2
-  article_id: 1 
+  article_id: 0 
   cmttitle: <%= n %>
-  comment: (<%= n %>)いいなあ！！
+  comment: (<%= n %>)コメント！！
 
 <% end %>
 

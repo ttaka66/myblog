@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-oneart:
-  id: 1
-  member_id: 1
-  title: 17日の夜と大神さま発表！！
-  article: さっきまで113枚くらいあったのに…
 
-twoart:
-  id: 2
-  member_id: 2
-  title: うそーお！
-  article: 正解者が？！
+<% 0.upto(10) do |n| %>
+
+<%= n %>art:
+  id: <%= n %>
+  member_id: 1
+  title: <%= n %>
+  article: (<%= n %>)hello！！
+
+<% end %>
+
