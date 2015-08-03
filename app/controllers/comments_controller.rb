@@ -30,6 +30,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        format.html { redirect_to controller: :members, action: :index, other: params[:other] }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -63,8 +65,7 @@ class CommentsController < ApplicationController
 
   def com
     @article = Article.find(params[:article_id]) 
-    @comments5 = @article.comments.order(created_at: :desc).
-    limit(5)
+    @comments5 = @article.comments.order(created_at: :desc).limit(5)
   end
 
   private

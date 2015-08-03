@@ -1,17 +1,19 @@
 class MembersController < ApplicationController
   require 'kconv'
   before_action :set_member, only: [:show, :edit, :update, :destroy]
+  skip_before_action :check_logined, only: [:new, :create]
 
   # GET /members
   # GET /members.json
   def index
+    @ot_mem = params[:ot_mem]
     @members = Member.all
   end
 
   def result
     @mem = Member.find_by(name: params[:search])
     @articles = @mem.articles
-    @new_com = true
+    @other = true
 
     page_size = 5 # ページ当たりの件数
     @page = params[:page] == nil ? 1 : params[:page].to_i # ページ番号
@@ -50,7 +52,7 @@ class MembersController < ApplicationController
         format.html { redirect_to controller: :login, action: :index, notice: 'Member was successfully created.' }
         format.json { render :show, status: :created, location: @member }
       else
-        format.html { render :new }
+        format.html { render :new, layout: 'member_new' }
         format.json { render json: @member.errors, status: :unprocessable_entity }
       end
     end
@@ -129,7 +131,7 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:name, :email, :password, :password_confirmation, :birthday, :comefrom, :interest, :agreement )
+      params.require(:member).permit(:name, :blog_title, :email, :password, :password_confirmation, :birthday, :comefrom, :interest, :agreement )
     end
 
 end

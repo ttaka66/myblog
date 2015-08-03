@@ -3,7 +3,6 @@ class ArticlesController < ApplicationController
   require 'kconv'
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :set_article5, only: [:index, :show, :edit]
-  before_action :check_logined
 
   # GET /articles
   # GET /articles.json
@@ -123,34 +122,17 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 
-    def set_article5
-      @articles5 = Article.where(member_id: @mem).order(created_at: :desc).
-        limit(5)
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       params.require(:article).permit(:member_id, :title, :article)
     end
 
-    # 認証済みかどうかを判定するcheck_loginedフィルタを定義
-  def check_logined
-    # セッション情報:mem(id値)が存在するか
-    if session[:mem] then
-      # 存在する場合はmembersテーブルを検索し、ユーザー情報を取得
-      begin
-        @mem = Member.find(session[:mem])
-        
-      # ユーザー情報が存在しない場合は不正ユーザーとみなし、セッションを破棄
-      rescue ActiveRecord::RecordNotFound
-        reset_session
-      end
-    end
+  
 
-    # ユーザー情報を取得できなかった場合にはログインページ(login#indexへ)
-    unless @mem
-      flash[:referer] = request.fullpath
-      redirect_to controller: :login, action: :index
-    end
+  def set_article5
+      @articles5 = Article.where(member_id: @mem).order(created_at: :desc).
+        limit(5)
   end
+
 end

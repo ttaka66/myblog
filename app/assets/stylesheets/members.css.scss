@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#prof_change{
+	padding: 20px 20px;
+}
+
+#prof_change h1{
+	font-size: 150%;
+	text-align: center;
+	color: #FF0000;
+}
+
+#prof_change form{
+	background-color: #ffffff;
+	margin: 20px auto;
+	padding: 20px 20px;
+
+}
+
 #profile table{
 	width: 100%;
 	border: #f6bb9e 2px solid;
@@ -11,4 +28,17 @@
 #profile td{
 	border: #f6bb9e 1px solid;
 	padding: 5px 10px;
+}
+
+#sea_form{
+    padding: 20px 0 0 0;
+    width: 860px;
+    margin: 0 auto;
+}
+
+#sea_form #search{
+    font-size: 120%;
+    width: 20%;
+    height: 1em;
+    margin-bottom: 20px;
 }

@@ -19,6 +19,10 @@
       <td><%= f.text_field :name %></td>
     </tr>
     <tr>
+      <th>ブログタイトル</th>
+      <td><%= f.text_field :blog_title %></td>
+    </tr>
+    <tr>
       <th>Email</th>
       <td><%= f.text_field :email %></td>
     </tr>
@@ -32,7 +36,7 @@
     </tr>
     <tr>
       <th>誕生日</th>
-      <td><%= f.date_select :birthday %></td>
+      <td><%= f.date_select :birthday, start_year: 1915 %></td>
     </tr>
     <tr>
       <th>出身地</th>
@@ -48,7 +52,7 @@
     </tr>
     
   </table>
-  </div>
+  </div><!-- #profile -->
   <dl>
     <dt>agreement</dt>
     <dd><%= f.check_box :agreement %></dd>
