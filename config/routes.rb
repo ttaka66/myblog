@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   
+  root to: 'login#index'
+
   resources :articles do
+    collection do
+      get :other
+    end
     resources :comments, shallow: true do
       collection do
         get :com

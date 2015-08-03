@@ -5,10 +5,10 @@
         <p><%= simple_format(article.article) %></p>
         <ul>
           <li><%= article.created_at.strftime('%Y-%m-%d %H:%M:%S') %></li>
-          <li>Category</li>
+          <li><font color="red">Category(未実装)</font></li>
           <li><div class="<%= article.id %>"><div class="ajaxon"><%= link_to 'comment', com_article_comments_path(article_id: article),remote: true %></div></div></li>
+          <% if @other.nil? %>
           <li><%= link_to 'Show', article %></li>
-        <% if @other.nil? %>
           <li><%= link_to 'Edit', edit_article_path(article) %></li>
           <li><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></li>
         <% end %>

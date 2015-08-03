@@ -13,7 +13,9 @@
 					<dt>interest:</dt>
 					<dd><%= mem.interest %></dd>
 				</dl>
-				<p><%= link_to 'プロフィール変更', edit_member_path(mem) %></p>
+				<% if @other.nil? %>
+					<p><%= link_to 'プロフィール変更', edit_member_path(mem) %></p>
+				<% end %>
 			</div><!-- .sub & .profile -->
 			<div class="sub">
 			    <h1>the latest article</h1>
@@ -22,12 +24,12 @@
 			    <% end %>
 			</div><!-- sub -->
 			<div class="sub">
-				<h1>the latest comment</h1>
-					<p>なんだか最近(2014/12/31)</p>
-					<p>とうとうこの日がやってきた(2014/12/31)</p>
-					<p>とうとうこの日がやってきた(2014/12/31)</p>
-					<p>とうとうこの日がやってきた(2014/12/31)</p>
-					<p>とうとうこの日がやってきた(2014/12/31)</p>
+				<h1><font color="red">Category(未実装)</font></h1>
+					<p><font color="red">未実装</font></p>
+					<p><font color="red">未実装</font></p>
+					<p><font color="red">未実装</font></p>
+					<p><font color="red">未実装</font></p>
+					<p><font color="red">未実装</font></p>
 			</div><!-- sub -->
 			<div class="sub">
 				<h1>the past</h1>

@@ -6,7 +6,6 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @ot_mem = params[:ot_mem]
     @members = Member.all
   end
 
