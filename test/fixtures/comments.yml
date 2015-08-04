@@ -1,13 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+<% 0.upto(10) do |k| %>
+
 <% 0.upto(10) do |n| %>
 
-<%= n %>com:
-  id: <%= n %>
+<%= k %>com<%= n %>:
   member_id: 2
-  article_id: 0 
+  article_id: <%= k %> 
   cmttitle: <%= n %>
   comment: (<%= n %>)コメント！！
+
+<% end %>
 
 <% end %>
 

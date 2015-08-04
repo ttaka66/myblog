@@ -128,8 +128,6 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:member_id, :title, :article)
     end
 
-  
-
   def set_article5
       @articles5 = Article.where(member_id: @mem).order(created_at: :desc).
         limit(5)

@@ -12,6 +12,7 @@
 
 <!-- グローバルナビゲーション部分 -->
 <div id="gnav">
+	<%= link_to 'ログアウト', { controller: :login, action: :logout } %>
 	<ul>
 		<li><%= link_to_unless_current '投稿作成', new_article_path %></li>
 		<li><%= link_to_unless_current '過去の投稿', articles_path %></li>

@@ -11,5 +11,7 @@
 	<!-- ログイン後にリダイレクトすべきアクションを隠しフィールドにセット -->
 	<%= hidden_field_tag :referer, flash[:referer] %>
 	<%= submit_tag 'ログイン' %>
-	<%= link_to '新規登録',new_member_path %>
 <% end %>
+
+<br />
+<%= link_to '新規登録',new_member_path %>

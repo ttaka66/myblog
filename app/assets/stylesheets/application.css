@@ -61,3 +61,201 @@
     border-collapse: collapse;
     border-spacing: 0;
     }
+
+    /*全体*/
+    #wrap{
+        width: 940px;
+        margin: 0 auto;
+        background-color: #191970;
+    }
+
+    #wrap a[href="/login/logout"]{
+        text-align:　right;
+        color: #00ffff
+    }
+
+    /*グローバルナビゲーション*/
+    #gnav ul{
+        overflow: hidden;
+        padding-top: 40px;
+    }
+
+    /*ヘッダー*/
+    #header{
+        width: 940px;
+        height: 100px;
+        line-height: 100px;
+        /*background-color: #ff0000;*/
+    }
+
+    #header h1{
+        text-align: center;
+        color: #FF0000;
+        font-size: 200%
+    }
+
+    #gnav li{
+        display: block;
+        background-color: #c0c0c0;
+        border: #FF0000 1px solid;
+        border-right: 0;
+        float: left;
+        width: 312px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    .post #gnav li.gnav01{
+        background-color: #ffffff;
+        border-bottom: 0;
+    }
+
+    .past #gnav li.gnav02{
+        background-color: #ffffff;
+        border-bottom: 0;
+    }
+
+    .other #gnav li.gnav03{
+        background-color: #ffffff;
+        border-bottom: 0;
+    }
+
+    #gnav li.gnav03{
+        width: 312px;
+        border-right: #FF0000 1px solid;
+    }
+
+    /*コンテンツ*/
+    #contents{
+        width: 900px;
+        /*margin: 0 auto;*/
+        padding: 0 20px;
+        /*background-color: 000000;*/
+        overflow: hidden;
+    }
+
+    /*メイン*/
+    #main{
+        width: 620px;
+        /*background-color: #00ffff;*/
+        float: right;
+    }
+
+    .article{
+        width: 580px;
+        padding: 20px;
+        background-color: #ffffe0;
+        margin-bottom: 40px;
+    }
+
+    .other .article{
+        width: 580px;
+        padding: 20px;
+        background-color: #ffffff;
+        margin-bottom: 40px;
+    }
+
+    .article h2{
+        font-size: 200%;
+        border-bottom: #FF0000 1px dotted;
+        margin-bottom: 20px; 
+    }
+
+    .article p{
+        line-height: 1.2;
+        margin-bottom: 20px;
+
+    }
+
+    .article ul{
+        overflow: hidden;
+        float: right;
+    }
+
+    .article li{
+        float: left;
+        font-size: 85%;
+        line-height: 1.2;
+        margin-right: 1em;
+    }
+
+    .comment{
+        width: 580px;
+        padding: 20px;
+        background-color: #ffffff;
+        margin-bottom: 40px;
+    }
+
+    .comment h2{
+        font-size: 200%;
+        border-bottom: #FF0000 1px dotted;
+        margin-bottom: 20px; 
+    }
+
+    .comment p{
+        line-height: 1.2;
+        margin-bottom: 20px;
+
+    }
+
+    .comment ul{
+        overflow: hidden;
+        float: right;
+    }
+
+    .comment li{
+        float: left;
+        font-size: 85%;
+        line-height: 1.2;
+        margin-right: 1em;
+    }
+
+    .page ul{
+        overflow: hidden;
+        float: right;
+    }
+
+    .page li{
+        float: left;
+        font-size: 85%;
+        line-height: 1.2;
+        margin-right: 1em;
+    }
+
+    /*サイドバー*/
+    #side{
+        width: 240px;
+        /*background-color: #ffff00;*/
+        float: left;
+    }
+    .sub{
+        width: 200px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #ffffe0;
+    }
+
+    .other .sub{
+        width: 200px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #ffffff;
+    }
+
+    .sub h3{
+        font-size: 120%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .profile dt{
+        display: block;
+        background-color: #c0c0c0;
+        margin-top: 10px;
+    }
+
+    .sub p{
+        text-align: center;
+        margin: 10px 0;
+    }
