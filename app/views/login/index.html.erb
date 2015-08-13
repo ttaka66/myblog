@@ -1,17 +1,54 @@
-<p style="color: Red"><%= @error %></p>
-<%= form_tag action: :auth do %>
-	<div class="field">
-		<%= label_tag :name, 'ユーザー名' %> : <br />
-		<%= text_field_tag :name, '', size: 20 %>
-	</div>
-	<div class="field">
-		<%= label_tag :password, 'パスワード' %> : <br />
-		<%= password_field_tag :password, '', size: 20 %>
-	</div>
-	<!-- ログイン後にリダイレクトすべきアクションを隠しフィールドにセット -->
-	<%= hidden_field_tag :referer, flash[:referer] %>
-	<%= submit_tag 'ログイン' %>
-<% end %>
+<div id="login_form" class="container">
+	
+	<div class="row">
+		<div class="col-sm-3 hidden-xs" ></div>
+		
+		<div class="col-sm-6 col-xs-12">
+			
+			<h1>ログイン</h1>
 
-<br />
-<%= link_to '新規登録',new_member_path %>
+			<p style="color: Red"><%= @error %></p>
+
+
+			<div class="form-horizontal" role="form" style="margin-bottom:15px;">
+			<%= form_tag({controller: :login, action: :auth}) do %>
+				<div class="form_group", style:"display:block">
+					<%= label_tag :name, 'ユーザー名', class: "control-label col-sm-4" %>
+					<div class="control-label col-sm-8">
+						<%= text_field_tag :name, '', size: 20, class: "form-control",
+						placeholder: "username" %>
+					</div>
+				</div>
+
+				<div class="form_group">
+					<%= label_tag :password, 'パスワード', class: "control-label col-sm-4" %>
+					<div class="control-label col-sm-8" style="margin-bottom:15px;">
+						<%= password_field_tag :password, '', size: 20, class: "form-control",
+						placeholder: "password" %>
+					</div>
+				</div>
+
+				<!-- ログイン後にリダイレクトすべきアクションを隠しフィールドにセット -->
+				<%= hidden_field_tag :referer, flash[:referer] %>
+
+				<div id="button" class="form_group">
+						<%= submit_tag 'ログインする', class: "btn btn-primary" %>
+
+						<%= link_to '新規登録する',new_member_path,
+						class: "btn btn-success" %>
+
+				</div>
+
+			<% end %>
+				
+			</div>
+
+		</div>
+
+	
+
+
+
+		<div class="col-sm-3 hidden-xs"></div>
+	</div>
+</div>

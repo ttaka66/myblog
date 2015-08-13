@@ -1,5 +1,15 @@
-<h1>New member</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', members_path %>
+<div id="new_entry">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3 hidden-xs" ></div>
+			<div class="col-sm-6 col-xs-12">
+			<h1>新規登録</h1>
+			<%= render 'form' %>
+				<div id="return" style="margin-bottom:15px;">
+					<%= link_to 'ログインページへ', members_path %>
+				</div>
+			</div>
+			<div class="col-sm-3 hidden-xs"></div>
+		</div>
+	</div>
+</div>

@@ -1,3 +1,40 @@
 // Place all the styles related to the login controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*ログインフォーム*/
+
+#login_form h1{
+    margin: 20px 0;
+    font-size: 150%;
+    text-align: center;
+}
+
+#login_form p{
+    text-align: center;
+}
+
+#login_form #button{
+    text-align: center;
+}
+
+/*登録フォーム*/
+
+#new_entry h1{
+    margin: 20px 0;
+    font-size: 150%;
+    text-align: center;
+}
+
+#entry_form .check_box {
+  text-align: center;
+}
+
+#entry_form .entry {
+  text-align: center;
+}
+
+#new_entry #return{
+    text-align: center;
+    margin: 50px 0;
+}
