@@ -11,3 +11,13 @@
 
 <% end %>
 
+<% 11.upto(20) do |n| %>
+
+<%= n %>art:
+  id: <%= n %>
+  member_id: 2
+  title: <%= n %>
+  article: (<%= n %>)hello！！
+
+<% end %>
+

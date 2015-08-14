@@ -1,61 +1,80 @@
-<p id="notice"><%= notice %></p>
+<div id="show_art">
 
-<!-- ヘッダー部分 -->
-<div id="header">
-  <%= render 'application/title' %>
-</div><!-- #header -->   
+  <!-- ヘッダー部分 -->
+  <div id="header">
+    <%= render 'application/title' %>
+  </div><!-- #header -->   
 
-<!-- メイン部分 -->
-<div id="main">
-  <div class="article">
-    <h2><%= @article.title %></h2>
-    <p><%= simple_format(@article.article) %></p>
-    <ul>
-      <li><%= @article.created_at.strftime('%Y-%m-%d %H:%M:%S') %></li>
-      <li>Category</li>
-      <li>Comment</li>
-      <li><%= link_to 'Show', @article %></li>
-      <li><%= link_to 'Edit', edit_article_path(@article) %></li>
-      <li><%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-    </ul>
+  <div class="row">
+
+  <!-- サイド部分 -->
+  <div class="col-sm-4 hidden-xs">
+    <%= render 'application/prof', mem: @mem %>
+  </div><!-- .col-sm-4 -->
+
+  <!-- メイン部分 -->
+  <div class="col-sm-8 col-xs-12">
+    <div class="article">
+      <h2><%= @article.title %></h2>
+      <p><%= simple_format(@article.article) %></p>
+      <ul>
+        <li><%= @article.created_at.strftime('%Y-%m-%d %H:%M:%S') %></li>
+        <li>Category</li>
+      </ul>
+    </div>
+
+    <% if @other.nil? %>
+
+    <div class="btn-group">
+      
+      <li><%= link_to 'Show', @article, class: "btn btn-primary" %></li>
+      <li><%= link_to 'Edit', edit_article_path(@article), class: "btn btn-success" %></li>
+      <li><%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-info" %>
+      </li>
+
+    </div>
+
+    <% end %>
+
+    <% unless @comments.blank? %>
+      <% @comments.each do |comment| %>
+        <div class="comment">
+          <h2><%= comment.cmttitle %></h2>
+          <p><%= simple_format(comment.comment) %></p>
+          <ul>
+            <li><%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></li>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="text-center">
+      <ul class="pagination">
+
+        <% if @page > 1 %>
+          <li><%= link_to '前へ', { action: :show, page: @page - 1 } %></li>
+        <% end %>
+        
+        <% for i in 1..@page_last do %>
+          <li><%= link_to i, { action: :show, page: i } %></li>
+        <% end %>
+
+        <% if @page < @page_last %>
+          <li><%= link_to '次へ', { action: :show, page: @page + 1 } %></li>
+        <% end %>
+
+      </ul>
+
+    </div>
+
+
+
+  </div><!-- .col-sm-8 -->
+
+  <!-- フッター部分 -->
+  <div id="footer">
+    <%= render 'application/footer' %>
+  </div><!-- footer -->
+
+  </div><!-- #new_art -->
+
 </div>
-
-<% unless @comments.blank? %>
-    <% @comments.each do |comment| %>
-      <div class="comment">
-        <h2><%= comment.cmttitle %></h2>
-        <p><%= simple_format(comment.comment) %></p>
-        <ul>
-          <li><%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></li>
-        </ul>
-      </div>
-    <% end %>
-<% end %>
-
-<ul class="page">
-    <% if @page > 1 %>
-      <li><%= link_to '前へ', { action: :show, page: @page - 1 } %></li>
-    <% end %>
-    <% if @page < @page_last %>
-      <li><%= link_to '次へ', { action: :show, page: @page + 1 } %></li>
-    <% end %>
-    <% for i in 1..@page_last do %>
-      <li><%= link_to i, { action: :show, page: i } %></li>
-    <% end %>
-</ul>
-
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
-
-</div><!-- #main -->
-
-<!-- サイド部分 -->
-<div id="side">  
-  <%= render 'application/prof', mem: @mem %>
-</div><!-- #side -->
-
-<!-- フッター部分 -->
-<div id="footer">
-  <%= render 'application/footer' %>
-</div><!-- footer -->

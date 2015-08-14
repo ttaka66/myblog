@@ -2,23 +2,26 @@
 
 onemem:
   id: 1
-  name: one
+  name: user1
+  email: aaa@bbb.cc
   password: 2cf00a11121ad260ed32b290f9aefa01279bd5a2 # 12345
   salt: 5f90a188468f64998c5a
-  birthday: 2015-06-09
+  birthday: 2015-08-15
   comefrom: 日本
   interest: スポーツ
   photo: Belgium.png
   comments_count: 1
-  blog_title: ONEBLOG
+  blog_title: MYBLOG(user1)
 
 twomem:
   id: 2
-  name: two
-  password: 9be7f45387af4f7bbe720d16a6f334503b5c4f81
+  name: user2
+  email: aaa@bbb.cc
+  password: 2cf00a11121ad260ed32b290f9aefa01279bd5a2
   salt: 5f90a188468f64998c5a
-  birthday: 2015-06-09
+  birthday: 2015-08-15
   comefrom: MyString
   interest: MyString
   photo: 
   comments_count: 1
+  blog_title: MYBLOG(user1)

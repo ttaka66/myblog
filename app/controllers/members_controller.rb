@@ -9,6 +9,32 @@ class MembersController < ApplicationController
     @members = Member.all
   end
 
+  def search
+    begin
+      search = Member.find_by(name: params[:search]).id
+      redirect_to read_member_path(search)
+    rescue NoMethodError => e
+      redirect_to request.referer
+    end
+  end
+
+  def read
+    @mem = Member.find_by(id: params[:id])
+    @articles = @mem.articles
+    @other = true
+
+    page_size = 5 # ページ当たりの件数
+    @page = params[:page] == nil ? 1 : params[:page].to_i # ページ番号
+    page_num = @page - 1 # sql用ページ番号
+    @articles = Article.where(member_id: @mem.id).order(created_at: :desc).
+    limit(page_size).offset(page_num * page_size)
+    cnt = Article.where(member_id: @mem.id).count # 記事カウント
+    @page_last = (cnt.to_f / 5).ceil # ページ数切り上げ
+
+    @articles5 = Article.where(member_id: @mem.id).order(created_at: :desc).
+        limit(5)
+  end
+
   def result
     @mem = Member.find_by(name: params[:search])
     @articles = @mem.articles

@@ -1,0 +1,32 @@
+<!-- ヘッダー部分 -->
+<div id="header">
+  <%= render 'application/title' %>
+</div><!-- #header -->   
+
+<div class="row">
+
+	<!-- サイド部分 -->
+
+	<div class="col-sm-4 hidden-xs">
+		<!-- <div id="side">   -->
+		  <%= render 'application/prof', mem: @mem %>
+		<!-- </div>#side -->
+	</div>
+
+	<!-- メイン部分 -->
+
+	<div class="col-sm-8 col-xs-12">
+		<!-- <div id="main"> -->
+		  <%= render 'application/arlist' %>
+		<!-- </div>#main -->
+	</div>
+
+</div>
+
+	<!-- フッター部分 -->
+	<div id="footer">
+	  <%= render 'application/footer' %>
+	</div><!-- footer -->
+
+
+

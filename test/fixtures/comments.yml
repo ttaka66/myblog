@@ -7,8 +7,22 @@
 <%= k %>com<%= n %>:
   member_id: 2
   article_id: <%= k %> 
-  cmttitle: <%= n %>
-  comment: (<%= n %>)コメント！！
+  cmttitle: タイトル(<%= n %>)
+  comment: User2からコメント！！(<%= n %>)
+
+<% end %>
+
+<% end %>
+
+<% 11.upto(20) do |m| %>
+
+<% 0.upto(10) do |s| %>
+
+<%= m %>com<%= s %>:
+  member_id: 1
+  article_id: <%= m %> 
+  cmttitle: タイトル(<%= s %>)
+  comment: User1からのコメント(<%= s %>)！！
 
 <% end %>
 

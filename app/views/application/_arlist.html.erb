@@ -6,31 +6,64 @@
         <ul>
           <li><%= article.created_at.strftime('%Y-%m-%d %H:%M:%S') %></li>
           <li><font color="red">Category(未実装)</font></li>
-          <li><div class="<%= article.id %>"><div class="ajaxon"><%= link_to 'comment', com_article_comments_path(article_id: article),remote: true %></div></div></li>
-          <% if @other.nil? %>
-          <li><%= link_to 'Show', article %></li>
-          <li><%= link_to 'Edit', edit_article_path(article) %></li>
-          <li><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-        <% end %>
+          
         </ul>
-        <% unless @other.nil? %>
-         <%= link_to 'コメントを書く', new_article_comment_path(article_id: article),
-         remote: true %>
-        <% end %>
+        
       </div>
+
+        
+      <div class="btn-group">
+        <li>
+          <div class="<%= article.id %>">
+            <div class="ajaxon">
+              <%= link_to 'comment', com_article_comments_path(article_id: article), remote: true, class: "btn btn-info" %>
+             </div>
+          </div>
+        </li>
+        <% if @other.nil? %>
+          
+          <li><%= link_to 'Show', article, class: "btn btn-primary" %></li>
+          <li><%= link_to 'Edit', edit_article_path(article), class: "btn btn-success" %></li>
+          <li><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-info" %>
+          </li>
+
+        <% end %>
+
+        <% unless @other.nil? %>
+          <li><%= link_to 'コメントする', new_article_comment_path(article_id: article),
+            remote: true, class: "btn btn-success" %>
+          <% end %>
+          </li>
+      </div>
+        
+
       <div id="new_com<%= article.id %>"></div>
       <div id="com<%= article.id %>"></div>
       <div id="com"></div>
     <% end %>
 
-    <ul class="page">
-    <% if @page > 1 %>
-      <li><%= link_to '前へ', { action: :index, page: @page - 1 } %></li>
-    <% end %>
-    <% if @page < @page_last %>
-      <li><%= link_to '次へ', { action: :index, page: @page + 1 } %></li>
-    <% end %>
-    <% for i in 1..@page_last do %>
-      <li><%= link_to i, { action: :index, page: i } %></li>
-    <% end %>
-    </ul>
+    <div class="text-center">
+
+      <ul class="pagination">
+
+      <% url_now = request.url + '/page' %>
+
+        <% if @page > 1 %>
+          <li><%= link_to '前へ', { controller: controller_name, action: action_name,
+           page: @page - 1 } %></li>
+        <% end %>
+        
+        <% for i in 1..@page_last do %>
+          <li><%= link_to i, { controller: controller_name, action: action_name,
+           page: i } %></li>
+        <% end %>
+
+        <% if @page < @page_last %>
+          <li><%= link_to '次へ', { controller: controller_name, action: action_name,
+           page: @page + 1 } %></li>
+        <% end %>
+
+      </ul>
+
+    </div>
+

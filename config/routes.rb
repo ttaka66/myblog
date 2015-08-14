@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   resources :members do
     collection do
       post :result
+      post :search
+    end
+    member do
+      get :read
     end
   end
 

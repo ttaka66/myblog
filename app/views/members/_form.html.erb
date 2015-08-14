@@ -1,28 +1,28 @@
 <div id="entry_form">
   <div class="form-horizontal" role="form">
 
-  <div class="row">
-    <div class="col-sm-4 hidden-xs" ></div>
-    <div class="col-sm-8 hidden-xs" >
-    <%= form_for(@member, :html => { :multipart => true }) do |f| %>
-      <% if @member.errors.any? %>
+    <div class="row">
+      <div class="col-sm-4 hidden-xs" ></div>
+      <div class="col-sm-8 hidden-xs" >
+        <%= form_for(@member, :html => { :multipart => true }) do |f| %>
+        <% if @member.errors.any? %>
         <div id="error_explanation">
           <ul>
-          <% @member.errors.full_messages.each do |message| %>
+            <% @member.errors.full_messages.each do |message| %>
             <li><%= message %></li>
-          <% end %>
+            <% end %>
           </ul>
         </div>
-      <% end %>
-      <p><%= flash['result'] %></p>
+        <% end %>
+        <p><%= flash['result'] %></p>
+      </div>
     </div>
-  </div>
 
     <div class="form_group">
       <%= f.label :name, 'ユーザー名', class: "control-label col-sm-4" %>
       <div class="control-label col-sm-8">
         <%= f.text_field :name, size: 20, class: "form-control",
-              placeholder: "username"  %>
+        placeholder: "username"  %>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
       <%= f.label :blog_title, 'ブログタイトル', class: "control-label col-sm-4" %>
       <div class="control-label col-sm-8">
         <%= f.text_field :blog_title, size: 20, class: "form-control",
-              placeholder: "blog title"  %>
+        placeholder: "blog title"  %>
       </div>
     </div>
 
@@ -38,7 +38,7 @@
       <%= f.label :email, 'メールアドレス', class: "control-label col-sm-4" %>
       <div class="control-label col-sm-8">
         <%= f.text_field :email, size: 20, class: "form-control",
-              placeholder: "email"  %>
+        placeholder: "email"  %>
       </div>
     </div>
 
@@ -46,7 +46,7 @@
       <%= f.label :password, 'パスワード', class: "control-label col-sm-4" %>
       <div class="control-label col-sm-8">
         <%= f.password_field :password, size: 20, class: "form-control",
-              placeholder: "password"  %>
+        placeholder: "password"  %>
       </div>
     </div>
 
@@ -54,7 +54,7 @@
       <%= f.label :password_confirmation, 'パスワード確認', class: "control-label col-sm-4" %>
       <div class="control-label col-sm-8">
         <%= f.password_field :password_confirmation, size: 20, class: "form-control",
-              placeholder: "password_confirm"  %>
+        placeholder: "password_confirm"  %>
       </div>
     </div>
 
@@ -62,7 +62,7 @@
       <%= f.label :birthday, '誕生日', class: "control-label col-sm-4" %>
       <div class="control-label col-sm-8">
         <%= f.date_select :birthday, size: 20, class: "form-control",
-              placeholder: "birthday"  %>
+        placeholder: "birthday"  %>
       </div>
     </div>
 
@@ -70,7 +70,7 @@
       <%= f.label :comefrom, '出身地', class: "control-label col-sm-4" %>
       <div class="control-label col-sm-8">
         <%= f.text_field :comefrom, size: 20, class: "form-control",
-              placeholder: "comefrom"  %>
+        placeholder: "comefrom"  %>
       </div>
     </div>
 
@@ -78,7 +78,7 @@
       <%= f.label :interest, '趣味', class: "control-label col-sm-4" %>
       <div class="control-label col-sm-8">
         <%= f.text_field :interest, size: 20, class: "form-control",
-              placeholder: "interest"  %>
+        placeholder: "interest"  %>
       </div>
     </div>
 
@@ -87,25 +87,25 @@
       <%= f.label :photo, '写真', class: "control-label col-sm-4" %>
       <div class="control-label col-sm-8" style="margin-bottom:15px;">
         <%= file_field_tag :photo, size: 20, class: "form-control",
-              placeholder: "photo"  %>
+        placeholder: "photo"  %>
       </div>
     </div>
 
-      <div class="form_group">
+    <div class="form_group">
       <div class="" style="margin-bottom:15px;">
         <div class="check_box" >
-            <%= f.check_box :agreement %>
-            <%= f.label :agreement, '同意します' %>
+          <%= f.check_box :agreement %>
+          <%= f.label :agreement, '同意します' %>
         </div>
       </div>
-      </div>
+    </div>
     <div class="form_group">
       <div class="entry" style="margin-bottom:15px;">
-        <%= f.submit '登録する', class: "btn btn-primary" %>
+        <%= f.submit class: "btn btn-primary" %>
       </div>
     </div>
 
-  <% end %>
+    <% end %>
   </div>
 
 </div>

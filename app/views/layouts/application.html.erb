@@ -2,30 +2,64 @@
 <html>
 <head>
   <title>Myblog</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<!-- グローバルナビゲーション部分 -->
 <div id="wrap">
 
-<!-- グローバルナビゲーション部分 -->
-<div id="gnav">
-	<%= link_to 'ログアウト', { controller: :login, action: :logout } %>
-	<ul>
-		<li><%= link_to_unless_current '投稿作成', new_article_path %></li>
-		<li><%= link_to_unless_current '過去の投稿', articles_path %></li>
-		<li><%= link_to_unless_current '他の人の投稿', members_path %></li>
-	</ul>
-</div>
 
-<!-- コンテンツ部分 -->
-<div id="contents">
+	<nav class="navbar navbar-default navbar-fixed-top">
 
-<%= yield %>
+		<div id="nav">
 
-</div><!-- #content -->
+			<div class="navbar-header">
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".target">
+					<span class="icon_bar"></span>
+					<span class="icon_bar"></span>
+					<span class="icon_bar"></span>
+				</button>
+				<a class="navbar-brand" href="/articles">Home</a>
+			</div>
+
+
+			<div class="collapse navbar-collapse target">
+				<ul class="nav navbar-nav">
+					<li><%= link_to '記事を作成する', new_article_path %></li>
+					<li><%= link_to '過去の記事を見る', articles_path %></li>
+					
+					<li>
+						<%= form_tag( search_members_path, id: 'sea_form', 
+						class: "navbar-form") do %>
+							<div class="form-group">
+								<%= text_field_tag :search, @ot_mem, 
+								class: "form-control", placeholder: "ユーザー名" %>
+							</div>
+							<div class="form-group">
+								<%= submit_tag '検索', class: "btn btn-info"%>
+							</div>
+						<% end %>
+					</li>
+
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><%= link_to 'ログアウト', { controller: :login, action: :logout } %></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+
+	<!-- コンテンツ部分 -->
+	<div id="contents">
+
+		<%= yield %>
+
+	</div><!-- #content -->
 
 </div><!-- #wrap -->
 
