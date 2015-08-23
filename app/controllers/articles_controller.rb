@@ -2,16 +2,16 @@ class ArticlesController < ApplicationController
   # 文字列の形式を変更するメソッド
   require 'kconv'
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :set_article5, only: [:index, :show, :edit]
+  before_action :side, only: [:index, :show, :edit, :new, :category]
 
   # GET /articles
   # GET /articles.json
   def index
-    page_size = 5 # ページ当たりの件数
-    @page = params[:page] == nil ? 1 : params[:page].to_i # ページ番号
-    page_num = @page - 1 # sql用ページ番号
-    @articles = Article.where(member_id: session[:mem]).order(created_at: :desc).
-    limit(page_size).offset(page_num * page_size)
+      page_size = 5 # ページ当たりの件数
+      @page = params[:page] == nil ? 1 : params[:page].to_i # ページ番号
+      page_num = @page - 1 # sql用ページ番号
+      @articles = Article.where(member_id: session[:mem]).order(created_at: :desc).
+      limit(page_size).offset(page_num * page_size)
     cnt = Article.where(member_id: session[:mem]).count # 記事カウント
     @page_last = (cnt.to_f / 5).ceil # ページ数切り上げ
 
@@ -116,6 +116,12 @@ class ArticlesController < ApplicationController
 
   end
 
+  def category
+    # render text: params[:category]
+    @category = params[:category]
+    @articles = Article.where(member_id: session[:mem]).where(category: @category).order(created_at: :desc)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
@@ -125,12 +131,13 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:member_id, :title, :article)
+      params.require(:article).permit(:member_id, :title, :category, :article)
     end
 
-  def set_article5
+  def side
       @articles5 = Article.where(member_id: @mem).order(created_at: :desc).
         limit(5)
+      @categorys = Article.where(member_id: @mem).select(:category).distinct
   end
 
 end

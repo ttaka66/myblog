@@ -8,6 +8,7 @@
   member_id: 1
   title: <%= n %>
   article: (<%= n %>)hello！！
+  category: book
 
 <% end %>
 
@@ -15,9 +16,21 @@
 
 <%= n %>art:
   id: <%= n %>
+  member_id: 1
+  title: <%= n %>
+  article: (<%= n %>)hello！！
+  category: car
+
+<% end %>
+
+<% 21.upto(30) do |n| %>
+
+<%= n %>art:
+  id: <%= n %>
   member_id: 2
   title: <%= n %>
   article: (<%= n %>)hello！！
+  category: pet
 
 <% end %>
 

@@ -1,0 +1,42 @@
+<div class="other">
+	<div id="header">
+		<%= render 'application/title' %>
+	</div><!-- #header -->   
+
+	<div class="row">
+
+		<!-- サイド部分 -->
+
+		<div class="col-sm-4 hidden-xs">
+			<!-- <div id="side">   -->
+			<%= render 'application/prof', mem: @mem %>
+			<!-- </div>#side -->
+		</div>
+
+		<!-- メイン部分 -->
+
+		<div class="col-sm-8 col-xs-12">
+		<!-- <div id="main"> -->
+		<!-- <div class="frame"> -->
+		<div class="panel panel-success">
+			<!-- Default panel contents -->
+			<div class="panel-heading">
+				<h2 class="panel-title"><%= @category + "(#{@articles.count})" %></h2>
+			</div>
+			<ul class="list-group">
+				<% @articles.each do |a| %>
+				<%= link_to a.title, {controller: :members, action: :detail, art_no: a.id},
+				class: "list-group-item" %>
+				<% end %>
+			</ul>
+		</div>
+		<!-- </div>#main -->
+		</div>
+
+	</div>
+
+	<!-- フッター部分 -->
+	<div id="footer">
+		<%= render 'application/footer' %>
+	</div><!-- footer -->
+</div>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :articles do
     collection do
       get :other
+      post :category
     end
     resources :comments, shallow: true do
       collection do
@@ -15,11 +16,12 @@ Rails.application.routes.draw do
 
   resources :members do
     collection do
-      post :result
       post :search
     end
     member do
       get :read
+      post :category
+      get :detail
     end
   end
 

@@ -1,5 +1,5 @@
 <div class="sub">
-	<h1>profile</h1>
+	<h2>Profile</h2>
 	<%= image_tag "/docs/#{mem.id.to_s}-#{mem.created_at.to_s}-#{mem.photo}",
 	  alt: 'image', width: 300, height: 400 %>
 	<!-- <img src="" width="200" height="250" alt="photo"> -->
@@ -10,37 +10,44 @@
 		<dd><%= mem.birthday %></dd>
 		<dt>From:</dt>
 		<dd><%= mem.comefrom %></dd>
-		<dt>interest:</dt>
+		<dt>Interest:</dt>
 		<dd><%= mem.interest %></dd>
 	</dl>
 		
 	<% if @other.nil? %>
-		<p><%= link_to 'プロフィール変更', edit_member_path(mem) %></p>
+	<div class="text-center">
+		<%= link_to 'プロフィール変更', edit_member_path(mem), class: "btn btn-primary" %>
+	</div>
 	<% end %>
 </div><!-- .sub -->
 			
 <div class="sub">
-	<h1>the latest article</h1>
+	<h2>The latest article</h2>
 	<% @articles5.each do |article| %>
-    	<p><%= link_to article.title + '(' + article.created_at.strftime('%Y/%m/%d') + ')', article %></p>
+		<ul>
+    		<li><%= link_to article.title + '(' + article.created_at.strftime('%Y/%m/%d') + ')', article %></li>
+    	</ul>
 	<% end %>
 </div><!-- sub -->
 
 <div class="sub">
-	<h1><font color="red">Category(未実装)</font></h1>
-	<p><font color="red">未実装</font></p>
-	<p><font color="red">未実装</font></p>
-	<p><font color="red">未実装</font></p>
-	<p><font color="red">未実装</font></p>
-	<p><font color="red">未実装</font></p>
+	<h2>Category</h2>
+	<%= form_tag(controller: controller.controller_name, action: :category) do %>
+	<div class="text-center">
+		<%= select_tag('category', options_from_collection_for_select(@categorys, :category, :category)) %>
+		<%= submit_tag '検索' %>
+	</div>
+	<% end %>
 </div><!-- sub -->
 			
 <div class="sub">
-	<h1>the past</h1>
+	<h2>The past</h2>
 	
 	<% for i in 0..10 %>
 		<% pasttime = i.month.ago
 			past = pasttime.strftime('%Y-%m') %>
-		<P><%= link_to past, action: :index, ym: past %></P>
+			<ul>
+				<li><%= link_to past, action: :index, ym: past %></li>
+			</ul>
 	<% end %>
 </div><!-- sub -->

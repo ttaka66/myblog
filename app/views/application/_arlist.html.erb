@@ -4,9 +4,8 @@
         <h2><%= article.title %></h2>
         <p><%= simple_format(article.article) %></p>
         <ul>
+          <li>Category:<%= article.category %></li>
           <li><%= article.created_at.strftime('%Y-%m-%d %H:%M:%S') %></li>
-          <li><font color="red">Category(未実装)</font></li>
-          
         </ul>
         
       </div>
@@ -30,6 +29,8 @@
         <% end %>
 
         <% unless @other.nil? %>
+          <li><%= link_to 'Show', {controller: :members, action: :detail, 
+            art_no: article.id}, class: "btn btn-primary" %></li>
           <li><%= link_to 'コメントする', new_article_comment_path(article_id: article),
             remote: true, class: "btn btn-success" %>
           <% end %>
