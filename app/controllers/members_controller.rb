@@ -114,23 +114,23 @@ class MembersController < ApplicationController
           end
         end
       # 写真ファイルの形式が違うかサイズが大きい場合
-      else
-        render :edit
-      end
+    else
+      render :edit
+    end
 
     # 写真ファイルを更新しない場合
-    else
-      respond_to do |format|
-        if @member.update(member_params)
-          format.html { redirect_to articles_path }
-          format.json { render :show, status: :ok, location: @member }
-        else
-          format.html { render :edit }
-          format.json { render json: @member.errors, status: :unprocessable_entity }
-        end
+  else
+    respond_to do |format|
+      if @member.update(member_params)
+        format.html { redirect_to articles_path }
+        format.json { render :show, status: :ok, location: @member }
+      else
+        format.html { render :edit }
+        format.json { render json: @member.errors, status: :unprocessable_entity }
       end
     end
   end
+end
 
   # DELETE /members/1
   # DELETE /members/1.json
@@ -161,6 +161,6 @@ class MembersController < ApplicationController
 
       @articles5 = Article.where(member_id: @mem.id).order(created_at: :desc).
       limit(5)
-  end
+    end
 
-end
+  end
